@@ -1,14 +1,15 @@
-// At the top of YouthProgramCalculator.tsx
-/* eslint-disable no-unused-vars */
-/* eslint-disable prefer-const */
+// Add this with your other imports at the top
 "use client";
 
 import React, { useState, useEffect } from 'react';
 import { HelpCircle } from 'lucide-react';
+import { Config, Rates, Costs, Recommendation } from '../types';
+// Ensure this handler is properly defined and integrated
+
 
 const YouthProgramCalculator = () => {
   // Previous state configurations remain the same
-  const [config, setConfig] = useState({
+  const [config, setConfig] = useState<Config>({
     numberOfParticipants: 10,
     programDays: 30,
     isPaid: false,
@@ -18,9 +19,9 @@ const YouthProgramCalculator = () => {
     qualifiesForYouthPrize: false,
     dailyTransportNeeded: true,
     hoursPerDay: 6,
-  });
+});
 
-  const [rates, setRates] = useState({
+const [rates, setRates] = useState<Rates>({
     internHourlyRate: 16.50,
     coordinatorHourlyRate: 28.00,
     dailyFoodCost: 20.00,
@@ -29,22 +30,28 @@ const YouthProgramCalculator = () => {
     trainingMaterials: 200.00,
     vanCost: 56.00,
     busCostPerHour: 100.00,
-  });
+});
 
-  const [costs, setCosts] = useState({
+const [costs, setCosts] = useState<Costs>({
     staffing: 0,
     food: 0,
     equipment: 0,
     transport: 0,
     total: 0
-  });
+});
 
-  const [recommendations, setRecommendations] = useState([]);
-  const [showTooltip, setShowTooltip] = useState(false);
+const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
+const [showTooltip, setShowTooltip] = useState(false);
 
   // Calculate number of coordinators needed
   const calculateCoordinators = (participants) => {
     return Math.ceil(participants / 5);
+  };
+  const handleRateChange = (field: string, value: string) => {
+    setRates(prev => ({
+      ...prev,
+      [field]: parseFloat(value) || 0
+    }));
   };
 
   // Generate recommendations based on program configuration
@@ -316,12 +323,12 @@ const YouthProgramCalculator = () => {
               <label className="block text-gray-700 font-medium mb-1">
                 Intern Hourly Rate ($):
                 <input
-                  type="number"
-                  step="0.01"
-                  className="w-full p-2 border rounded mt-1 bg-white border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
-                  value={rates.internHourlyRate}
-                  onChange={(e) => handleRateChange('internHourlyRate', e.target.value)}
-                />
+                    type="number"
+                    step="0.01"
+                    className="w-full p-2 border rounded mt-1 bg-white border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                    value={rates.internHourlyRate}
+                    onChange={(e) => handleRateChange('internHourlyRate', e.target.value)}
+                    />
               </label>
 
               <label className="block text-gray-700 font-medium mb-1">
