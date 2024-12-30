@@ -211,7 +211,7 @@ useEffect(() => {
                   type="number"
                   className="w-full p-2 border rounded mt-1 bg-white border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                   value={config.numberOfParticipants}
-                  onChange={(e) => handleConfigChange('numberOfParticipants', e.target.value)}
+                  onChange={(e) => handleConfigChange('numberOfParticipants', Number(e.target.value))}
                 />
               </label>
 
@@ -221,7 +221,7 @@ useEffect(() => {
                   type="number"
                   className="w-full p-2 border rounded mt-1 bg-white border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                   value={config.programDays}
-                  onChange={(e) => handleConfigChange('programDays', e.target.value)}
+                  onChange={(e) => handleConfigChange('programDays', Number(e.target.value))}
                 />
               </label>
 
@@ -231,7 +231,7 @@ useEffect(() => {
                   type="number"
                   className="w-full p-2 border rounded mt-1 bg-white border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                   value={config.hoursPerDay}
-                  onChange={(e) => handleConfigChange('hoursPerDay', e.target.value)}
+                  onChange={(e) => handleConfigChange('hoursPerDay', Number(e.target.value))}
                 />
               </label>
 
