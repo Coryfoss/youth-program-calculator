@@ -44,7 +44,7 @@ const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
 const [showTooltip, setShowTooltip] = useState(false);
 
   // Calculate number of coordinators needed
-  const calculateCoordinators = (participants) => {
+  const calculateCoordinators = (participants: number) => {
     return Math.ceil(participants / 5);
   };
   const handleRateChange = (field: string, value: string) => {
