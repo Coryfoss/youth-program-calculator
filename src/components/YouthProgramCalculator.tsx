@@ -138,21 +138,22 @@ useEffect(() => {
   }, [config, rates]);
 
   // Handle configuration changes
-  const handleConfigChange = (field, value) => {
+  const handleConfigChange = <K extends keyof Config>(field: K, value: Config[K]) => {
     setConfig(prev => {
-      const newConfig = {
-        ...prev,
-        [field]: typeof value === 'string' ? parseFloat(value) || 0 : value
-      };
+        const newConfig = {
+            ...prev,
+            [field]: value,
+        };
 
-      // If program is not stationary, disable YouthPrize
-      if (field === 'isStationary' && !value) {
-        newConfig.qualifiesForYouthPrize = false;
-      }
+        // If program is not stationary, disable YouthPrize
+        if (field === 'isStationary' && value === false) {
+            newConfig.qualifiesForYouthPrize = false;
+        }
 
-      return newConfig;
+        return newConfig;
     });
-  };
+};
+
 
   return (
     <div className="max-w-7xl mx-auto p-8 bg-gray-100 min-h-screen">
