@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { AlertCircle, Info, HelpCircle } from 'lucide-react';
+import { Info, HelpCircle } from 'lucide-react';
 
 const YouthProgramCalculator = () => {
   // Previous state configurations remain the same
@@ -46,7 +46,7 @@ const YouthProgramCalculator = () => {
 
   // Generate recommendations based on program configuration
   useEffect(() => {
-    let newRecommendations = [];
+    const newRecommendations = []; // Change let to const
 
     // Youth Safety Requirements
     if (config.hasMinors) {
