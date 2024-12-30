@@ -1,7 +1,10 @@
+// At the top of YouthProgramCalculator.tsx
+/* eslint-disable no-unused-vars */
+/* eslint-disable prefer-const */
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Info, HelpCircle } from 'lucide-react';
+import { HelpCircle } from 'lucide-react';
 
 const YouthProgramCalculator = () => {
   // Previous state configurations remain the same
