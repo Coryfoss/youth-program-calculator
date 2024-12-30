@@ -55,10 +55,10 @@ const [showTooltip, setShowTooltip] = useState(false);
   };
 
   // Generate recommendations based on program configuration
-  useEffect(() => {
-    const newRecommendations = []; // Change let to const
-
-    // Youth Safety Requirements
+  // Within your component
+useEffect(() => {
+    const newRecommendations: Recommendation[] = [];
+  
     if (config.hasMinors) {
       newRecommendations.push({
         type: 'required',
@@ -70,8 +70,7 @@ const [showTooltip, setShowTooltip] = useState(false);
         ]
       });
     }
-
-    // YouthPrize Requirements
+  
     if (config.qualifiesForYouthPrize) {
       newRecommendations.push({
         type: 'required',
@@ -83,8 +82,7 @@ const [showTooltip, setShowTooltip] = useState(false);
         ]
       });
     }
-
-    // Previous recommendations logic remains...
+  
     if (config.isPaid && config.programDays > 60) {
       newRecommendations.push({
         type: 'warning',
@@ -96,7 +94,7 @@ const [showTooltip, setShowTooltip] = useState(false);
         ]
       });
     }
-
+  
     setRecommendations(newRecommendations);
   }, [config]);
 
